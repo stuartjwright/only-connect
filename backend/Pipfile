@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 pandas = "*"
+aiohttp = "*"
+aiohttp-middlewares = "*"
 
 [dev-packages]
 

@@ -1,5 +1,5 @@
 import random
-import json
+from uuid import uuid4
 from collections import defaultdict
 from data import get_random_wall
 
@@ -15,6 +15,7 @@ class Wall:
                 item_id = i*4 + j
                 grid.append({'id': item_id, 'group': i, 'item': item})
                 groups[i].add(item_id)
+        random.seed(8)  # for testing purposes, guarantees a wall I know how to solve!
         random.shuffle(grid)
 
         self.grid = grid
@@ -23,6 +24,7 @@ class Wall:
         self.solved = set()
         self.lives = 3
         self.complete = False
+        self.wall_id = 'abc123'  # str(uuid4()), temporarily hardcoded for testing purposes
 
     def guess(self, ids):
         """Receives list of 4 item IDs from user, representing their guess."""
@@ -54,9 +56,12 @@ class Wall:
     def set_complete(self):
         self.complete = True
 
-    def get_json(self) -> str:
-        """Returns JSON representation of object to be rendered on frontend"""
-        return json.dumps(self.__dict__)
+    def get_dict(self) -> dict:
+        """Returns dict representation of object to be sent as JSON response to frontend"""
+        d = self.__dict__.copy()
+        d['solved'] = list(d['solved'])
+        d['groups'] = {group: list(items) for group, items in d['groups'].items()}
+        return d
 
 
 if __name__ == '__main__':
