@@ -24,6 +24,22 @@ async def get_new_wall_handler(request):
         return web.json_response({'error': str(e)}, status=500)
 
 
+@routes.post('/api/solution')
+async def solution_handler(request):
+    try:
+        logging.info(request)
+        params = await request.json()
+        wall_id = params['wallId']
+        wall = ACTIVE_WALLS[wall_id]
+        wall.set_complete()
+        wall_data = wall.get_dict()
+        return web.json_response(wall_data, status=201)
+    except Exception as e:
+        logging.error(e)
+        return web.json_response({'error': True, 'message': str(e)}, status=500)
+
+
+
 @routes.post('/api/guess')
 async def receive_guess_handler(request):
     try:

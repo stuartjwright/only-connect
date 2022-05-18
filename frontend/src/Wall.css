@@ -17,7 +17,7 @@
 
 .tile {
     background-color: lightblue;
-    color: navy;
+    color: darkslateblue;
     padding: 10%;
     text-align: center;
     border-radius: 5px;
@@ -28,12 +28,12 @@
 }
 
 .selected {
-    background-color: navy;
+    background-color: darkslateblue;
     color: lightblue;
 }
 
 .selectable:hover {
-    opacity: 75%;
+    opacity: 90%;
 }
 
 .solved {
@@ -43,6 +43,7 @@
 
 .solved:hover {
     opacity: 100%;
+    cursor: default;
 }
 
 .solved-1 {

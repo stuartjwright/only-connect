@@ -55,10 +55,12 @@ class Wall:
             remaining = [i for i in range(4) if i not in self.solved][0]
             self.update_grid(remaining)
         if len(self.solved) >= 4:
-            self.set_complete()
+            self.complete = True
 
     def set_complete(self):
-        self.complete = True
+        for group_id in range(4):
+            if group_id not in self.solved and not self.complete:
+                self.update_grid(group_id)
 
     def get_dict(self) -> dict:
         """Returns dict representation of object to be sent as JSON response to frontend"""

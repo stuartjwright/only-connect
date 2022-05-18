@@ -21,3 +21,13 @@ export const postGuess = async (wallId, guessIds) => {
     return {}
   }
 }
+
+export const requestSolution = async (wallId) => {
+  const response = await axios.post(`${baseUrl}/solution`, { wallId })
+  try {
+    return response.data
+  } catch (error) {
+    console.log(error)
+    return {}
+  }
+}
