@@ -15,7 +15,7 @@ class Wall:
                 item_id = i*4 + j
                 grid.append({'id': item_id, 'group': i, 'item': item})
                 groups[i].add(item_id)
-        random.seed(8)  # for testing purposes, guarantees a wall I know how to solve!
+        # random.seed(8)  # for testing purposes, guarantees a wall I know how to solve!
         random.shuffle(grid)
 
         self.grid = grid
@@ -24,7 +24,8 @@ class Wall:
         self.solved = set()
         self.lives = 3
         self.complete = False
-        self.wall_id = 'abc123'  # str(uuid4()), temporarily hardcoded for testing purposes
+        # self.wall_id = 'abc123'  # str(uuid4()), temporarily hardcoded for testing purposes
+        self.wall_id = str(uuid4())
 
     def guess(self, ids):
         """Receives list of 4 item IDs from user, representing their guess."""
@@ -50,6 +51,9 @@ class Wall:
         unsolved = [row for row in self.grid if row['group'] != group_id and row['group'] not in self.solved]
         self.grid = already_solved + newly_solved + unsolved
         self.solved.add(group_id)
+        if len(self.solved) == 3:
+            remaining = [i for i in range(4) if i not in self.solved][0]
+            self.update_grid(remaining)
         if len(self.solved) >= 4:
             self.set_complete()
 

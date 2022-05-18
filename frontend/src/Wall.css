@@ -1,0 +1,59 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    padding: 5px;
+    font-size: medium;
+    max-width: 800px;
+}
+
+@media only screen and (min-width: 640px) {
+    .grid-container {
+      grid-template-columns: repeat(4, 1fr);
+      font-size: large;
+    }
+  }
+
+.tile {
+    background-color: lightblue;
+    color: navy;
+    padding: 10%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.selectable {
+    cursor: pointer;
+}
+
+.selected {
+    background-color: navy;
+    color: lightblue;
+}
+
+.selectable:hover {
+    opacity: 75%;
+}
+
+.solved {
+    cursor: default;
+    color: white;
+}
+
+.solved:hover {
+    opacity: 100%;
+}
+
+.solved-1 {
+    background-color: darkblue;
+}
+.solved-2 {
+    background-color: green;
+}
+.solved-3 {
+    background-color: maroon;
+}
+.solved-4 {
+    background-color: teal;
+}
