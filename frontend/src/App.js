@@ -11,14 +11,19 @@ import Footer from './Footer.js'
 import Header from './Header.js'
 
 const App = () => {
+  const timeToSolve = 180 // 3 minutes
+  const numSquares = 16 // 4x4 grid
+
   // Initialise empty wall
   const [wallData, setWallData] = useState({})
+  const { frozen, complete } = wallData
+  const wallId = wallData['wall_id']
 
   // Intialise countdown timer to 3 minutes
-  const [timer, setTimer] = useState(5)
+  const [timer, setTimer] = useState(timeToSolve)
 
   // Keep track of user's selections for their current guess
-  const [selectedIds, setSelectedIds] = useState(new Array(16).fill(0))
+  const [selectedIds, setSelectedIds] = useState(new Array(numSquares).fill(0))
 
   // Keep track of whether or not user has opted to show connections
   const [showConnections, setShowConnections] = useState(false)
@@ -27,7 +32,7 @@ const App = () => {
   const fetchWallData = async () => {
     const newWall = await getNewWall()
     setWallData(newWall)
-    setSelectedIds(new Array(16).fill(0))
+    setSelectedIds(new Array(numSquares).fill(0))
     setShowConnections(false)
   }
 
@@ -42,11 +47,10 @@ const App = () => {
   }
 
   // Unselect all when user hits relevant button
-  const clearSelected = () => setSelectedIds(new Array(16).fill(0))
+  const clearSelected = () => setSelectedIds(new Array(numSquares).fill(0))
 
   // Send user's guess to server, and update wall
   const sendGuess = async (guessIds) => {
-    const wallId = wallData['wall_id']
     const newWall = await postGuess(wallId, guessIds)
     setWallData(newWall)
   }
@@ -59,40 +63,37 @@ const App = () => {
   }
 
   // Freeze wall if clock reaches three minutes
-  const { frozen } = wallData
   const freezeWall = useCallback(async () => {
     console.log('freezing wall')
-    const wallId = wallData['wall_id']
     const frozenWall = await requestFreeze(wallId)
     setWallData(frozenWall)
     setTimer(0)
-    setSelectedIds(new Array(16).fill(0))
-  }, [wallData])
+    setSelectedIds(new Array(numSquares).fill(0))
+  }, [wallId])
 
   // Decrement timer once a second until we hit 0
-  const wallId = wallData['wall_id']
   useEffect(() => {
     const interval = setInterval(() => {
-      if (timer > 1) {
+      if (timer > 1 && !complete && !frozen) {
         setTimer(timer - 1)
-      } else if (!frozen) {
+      } else if (complete) {
+        clearInterval(interval)
+      } else if (timer === 1 && !frozen) {
         freezeWall()
         clearInterval(interval)
       }
     }, 1000)
     return () => clearInterval(interval)
-  }, [timer, frozen, freezeWall])
+  }, [timer, frozen, freezeWall, complete])
 
   // Reset timer on new wall ID
   useEffect(() => {
-    setTimer(5)
+    setTimer(timeToSolve)
   }, [wallId])
-
-  console.log(timer)
 
   return wallData?.grid ? (
     <div className="main-wrapper">
-      <Header />
+      <Header {...{ timer }} />
       <Wall
         {...{
           wallData,
