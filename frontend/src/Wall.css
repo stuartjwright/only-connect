@@ -17,10 +17,12 @@
 
 .tile {
     background-color: lightblue;
-    color: darkslateblue;
-    padding: 10%;
-    text-align: center;
+    color: rgb(34, 34, 102);
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .selectable {
@@ -28,7 +30,7 @@
 }
 
 .selected {
-    background-color: darkslateblue;
+    background-color: rgb(65, 55, 127);
     color: lightblue;
 }
 
@@ -36,15 +38,43 @@
     opacity: 90%;
 }
 
-.solved {
-    cursor: default;
-    color: white;
-}
+
 
 .solved:hover {
     opacity: 100%;
     cursor: default;
 }
+
+
+
+.connections-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    padding: 5px;
+    font-size: medium;
+    max-width: 800px;
+}
+
+@media only screen and (min-width: 640px) {
+    .connections-container {
+      grid-template-columns: 1;
+      font-size: large;
+    }
+  }
+
+  .connections-tile {
+    background-color: lightblue;
+    color: darkslateblue;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
 
 .solved-1 {
     background-color: darkblue;
@@ -57,4 +87,16 @@
 }
 .solved-4 {
     background-color: teal;
+}
+
+.frozen {
+    opacity: 50%;
+    cursor: default;
+    pointer-events: none;
+}
+
+.solved {
+    cursor: default;
+    color: white;
+    opacity: 100%;
 }

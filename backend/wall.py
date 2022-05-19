@@ -15,16 +15,16 @@ class Wall:
                 item_id = i*4 + j
                 grid.append({'id': item_id, 'group': i, 'item': item})
                 groups[i].add(item_id)
-        # random.seed(8)  # for testing purposes, guarantees a wall I know how to solve!
+        self.connections = [group['connection'] for group in data]
+
         random.shuffle(grid)
 
         self.grid = grid
         self.groups = groups
-        self.connections = [group['connection'] for group in data]
         self.solved = set()
         self.lives = 3
         self.complete = False
-        # self.wall_id = 'abc123'  # str(uuid4()), temporarily hardcoded for testing purposes
+        self.frozen = False
         self.wall_id = str(uuid4())
 
     def guess(self, ids):
@@ -43,6 +43,11 @@ class Wall:
             self.update_grid(group_id)
         elif len(self.solved) == 2:
             self.lives -= 1
+            if self.lives <= 0:
+                self.freeze()
+
+    def freeze(self):
+        self.frozen = True
 
     def update_grid(self, group_id):
         """Updates object's after a correct guess"""

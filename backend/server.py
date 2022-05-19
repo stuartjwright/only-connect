@@ -56,6 +56,21 @@ async def receive_guess_handler(request):
         return web.json_response({'error': True, 'message': str(e)}, status=500)
 
 
+@routes.post('/api/freeze')
+async def freeze_handler(request):
+    try:
+        logging.info(request)
+        params = await request.json()
+        wall_id = params['wallId']
+        wall = ACTIVE_WALLS[wall_id]
+        wall.freeze()
+        wall_data = wall.get_dict()
+        return web.json_response(wall_data, status=201)
+    except Exception as e:
+        logging.error(e)
+        return web.json_response({'error': True, 'message': str(e)}, status=500)
+
+
 app = web.Application()
 app = web.Application(middlewares=[cors_middleware(allow_all=True)])
 app.add_routes(routes)

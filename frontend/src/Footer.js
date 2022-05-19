@@ -7,6 +7,7 @@ const Footer = ({
   getSolution,
   wallData,
   selectedIds,
+  toggleConnections,
 }) => {
   const disableClear = selectedIds.filter((id) => id > 0).length === 0
   const disableShowSolution = wallData.complete === true
@@ -20,20 +21,26 @@ const Footer = ({
         })}
         onClick={disableClear ? null : clearSelected}
       >
-        Clear Selected
+        <p>Clear Selected</p>
       </div>
       <div className="button selectable" onClick={fetchWallData}>
-        New Wall
+        <p>New Wall</p>
       </div>
-      <div
-        className={classNames('button', {
-          disabled: disableShowSolution,
-          selectable: !disableShowSolution,
-        })}
-        onClick={disableShowSolution ? null : getSolution}
-      >
-        Show Solution
-      </div>
+      {disableShowSolution ? (
+        <div
+          className={classNames('button', 'selectable')}
+          onClick={toggleConnections}
+        >
+          <p>Toggle Connections</p>
+        </div>
+      ) : (
+        <div
+          className={classNames('button', 'selectable')}
+          onClick={getSolution}
+        >
+          <p>Show Solution</p>
+        </div>
+      )}
     </div>
   )
 }

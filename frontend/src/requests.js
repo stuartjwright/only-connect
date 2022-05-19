@@ -31,3 +31,13 @@ export const requestSolution = async (wallId) => {
     return {}
   }
 }
+
+export const requestFreeze = async (wallId) => {
+  const response = await axios.post(`${baseUrl}/freeze`, { wallId })
+  try {
+    return response.data
+  } catch (error) {
+    console.log(error)
+    return {}
+  }
+}
