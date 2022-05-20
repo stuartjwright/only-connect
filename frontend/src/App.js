@@ -53,6 +53,7 @@ const App = () => {
   const sendGuess = async (guessIds) => {
     const newWall = await postGuess(wallId, guessIds)
     setWallData(newWall)
+    setSelectedIds(new Array(numSquares).fill(0))
   }
 
   // Get solution if user gives up

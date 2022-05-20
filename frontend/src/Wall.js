@@ -24,7 +24,6 @@ const Wall = ({
       .filter((id) => id !== null)
     if (guessIds.length === 4) {
       sendGuess(guessIds)
-      setSelectedIds(new Array(16).fill(0))
     }
   }, [selectedIds, sendGuess, setSelectedIds])
 
