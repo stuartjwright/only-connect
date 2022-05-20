@@ -11,7 +11,7 @@ import Footer from './Footer.js'
 import Header from './Header.js'
 
 const App = () => {
-  const timeToSolve = 60 // 3 minutes
+  const timeToSolve = 180 // 3 minutes
   const numSquares = 16 // 4x4 grid
 
   // Initialise empty wall
