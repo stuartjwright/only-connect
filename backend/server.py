@@ -1,6 +1,7 @@
+import os
+from dotenv import load_dotenv
 import logging
 from aiohttp import web
-from aiohttp_middlewares import cors_middleware
 from wall import Wall
 
 routes = web.RouteTableDef()
@@ -74,7 +75,12 @@ async def freeze_handler(request):
         return web.json_response({'error': True, 'message': str(e)}, status=500)
 
 
-app = web.Application()
-app = web.Application(middlewares=[cors_middleware(allow_all=True)])
-app.add_routes(routes)
-web.run_app(app, host='localhost', port=5000)
+# Don't run server via script or allow CORS in production
+if os.getenv('ENVIRONMENT') != 'prod':
+    from aiohttp_middlewares import cors_middleware
+    app = web.Application(middlewares=[cors_middleware(allow_all=True)])
+    app.add_routes(routes)
+    web.run_app(app, host='0.0.0.0', port=5000)
+else:
+    app = web.Application()
+    app.add_routes(routes)

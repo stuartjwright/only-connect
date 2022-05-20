@@ -1,6 +1,11 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:5000/api'
+let baseUrl
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  baseUrl = 'http://localhost:5000/api'
+} else {
+  baseUrl = '/api'
+}
 
 export const getNewWall = async () => {
   const response = await axios.get(`${baseUrl}/get_new_wall`)
