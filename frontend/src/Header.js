@@ -1,11 +1,14 @@
 import Timer from './Timer.js'
-import Status from './Status.js'
+import Lives from './Lives.js'
 import './Header.css'
 
-const Header = ({ timer }) => {
+const Header = ({ timer, frozen, lives }) => {
   return (
     <div className="header-container">
-      <Status />
+      <Lives {...{ frozen, lives }} />
+      <div className="heading">
+        <h1>The Wall</h1>
+      </div>
       <Timer {...{ timer }} />
     </div>
   )

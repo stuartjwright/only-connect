@@ -33,6 +33,7 @@ async def solution_handler(request):
         wall = ACTIVE_WALLS[wall_id]
         wall.set_complete()
         wall_data = wall.get_dict()
+        del ACTIVE_WALLS[wall_id]
         return web.json_response(wall_data, status=201)
     except Exception as e:
         logging.error(e)
@@ -50,6 +51,8 @@ async def receive_guess_handler(request):
         wall = ACTIVE_WALLS[wall_id]
         wall.guess(guess_ids)
         wall_data = wall.get_dict()
+        if wall.complete:
+            del ACTIVE_WALLS[wall_id]
         return web.json_response(wall_data, status=201)
     except Exception as e:
         logging.error(e)

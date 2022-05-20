@@ -11,12 +11,12 @@ import Footer from './Footer.js'
 import Header from './Header.js'
 
 const App = () => {
-  const timeToSolve = 180 // 3 minutes
+  const timeToSolve = 60 // 3 minutes
   const numSquares = 16 // 4x4 grid
 
   // Initialise empty wall
   const [wallData, setWallData] = useState({})
-  const { frozen, complete } = wallData
+  const { frozen, complete, lives } = wallData
   const wallId = wallData['wall_id']
 
   // Intialise countdown timer to 3 minutes
@@ -64,7 +64,6 @@ const App = () => {
 
   // Freeze wall if clock reaches three minutes
   const freezeWall = useCallback(async () => {
-    console.log('freezing wall')
     const frozenWall = await requestFreeze(wallId)
     setWallData(frozenWall)
     setTimer(0)
@@ -93,7 +92,7 @@ const App = () => {
 
   return wallData?.grid ? (
     <div className="main-wrapper">
-      <Header {...{ timer }} />
+      <Header {...{ timer, frozen, lives }} />
       <Wall
         {...{
           wallData,

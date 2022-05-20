@@ -66,6 +66,7 @@ class Wall:
         for group_id in range(4):
             if group_id not in self.solved and not self.complete:
                 self.update_grid(group_id)
+        self.freeze()
 
     def get_dict(self) -> dict:
         """Returns dict representation of object to be sent as JSON response to frontend"""
