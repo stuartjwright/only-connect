@@ -1,13 +1,85 @@
-﻿wall_id,connection,item_1,item_2,item_3,item_4
-1,___itude,Lat,Long,Alt,Fort
-1,Great ___,Dane,Scott,Escape,Britain
-1,Keys on keyboard,Delete,Insert,Enter,Shift
-1,___ Bar,Space,Cross,Cocktail,Crow
-2,North American timezones,Central,Eastern,Mountain,Pacific
-2,Horse riding styles,Bareback,English,Jumping,Western
-2,___ Cross,Maltese,Red,Southern,Victoria
-2,London Underground lines,Circle,District,Jubilee,Northern
-3,Violinists,Bell,Hahn,Kennedy,Perlman
-3,Boxing weights,Bantam,Cruiser,Feather,Welter
-3,Naval Vessels,Destroyer,Dreadnought,Frigate,Minesweeper
-3,Towers,Cooling,Fly,Siege,Water
+﻿wall_id,connection,item_1,item_2,item_3,item_4,,,,,
+1,___itude,Lat,Long,Alt,Fort,3,4,3,4,4
+1,Great ___,Dane,Scott,Escape,Britain,4,5,6,7,7
+1,Keys on keyboard,Delete,Insert,Enter,Shift,6,6,5,5,6
+1,___ Bar,Space,Cross,Cocktail,Crow,5,5,8,4,8
+2,North American timezones,Central,Eastern,Mountain,Pacific,7,7,8,7,8
+2,Horse riding styles,Bareback,English,Jumping,Western,8,7,7,7,8
+2,___ Cross,Maltese,Red,Southern,Victoria,7,3,8,8,8
+2,London Underground lines,Circle,District,Jubilee,Northern,6,8,7,8,8
+3,Violinists,Bell,Hahn,Kennedy,Perlman,4,4,7,7,7
+3,Boxing weights,Bantam,Cruiser,Feather,Welter,6,7,7,6,7
+3,Naval Vessels,Destroyer,Dreadnought,Frigate,Minesweeper,9,11,7,11,11
+3,Towers,Cooling,Fly,Siege,Water,7,3,5,5,7
+4,Strictly Come Dancing winners,Clancy,Judd,Chambers,Gough,6,4,8,5,8
+4,Dictionaries,Collins,Webster's,Macquarie,Oxford,7,9,9,6,9
+4,Former coins,Crown,Florin,Farthing,Halfpenny,5,6,8,9,9
+4,___ pig,Guinea,Percy,Stuck,Male chauvinist,6,5,5,15,15
+5,Daytime quiz shows,Pointless,15 to 1,Perfection,The Chase,9,7,10,9,10
+5,Final ___,Countdown,Score,Frontier,Fantasy,9,5,8,7,9
+5,Slang for money,Lady Godiva,Bag of sand,Bob,Tanner,11,11,3,6,11
+5,Perfume brands,No 5,Opium,J'Adore,Shalimar,4,5,7,8,8
+6,Bond girls,Galore,Goodnight,Ryder,Suzuki,6,9,5,6,9
+6,Motorcycle brands,Triumph,Aprilia,Ducati,Indian,7,7,6,6,7
+6,Sporting cups,Stanley,Calcutta,Melbourne,Fed,7,8,9,3,9
+6,Port ___,of Spain,Elizabeth,Harcourt,Talbot,8,9,8,6,9
+7,Pulp songs,Help the Aged,Common People,Mis-Shapes,Disco 2000,13,13,10,10,13
+7,Charities,Save the Children,Scope,Mencap,Refuge,17,5,6,6,17
+7,US TV detectives,McMillan,Lacey,Drebin,McNulty,8,5,6,7,8
+7,Agony aunts,Ironside,Proops,Rayner,Sanders,8,6,6,7,8
+8,Beginnings,Dawn,Fount,Seed,Genesis,4,5,4,7,7
+8,Marks,Question,Birth,Trade,Water,8,5,5,5,8
+8,Areas of land,Plot,Belt,Parcel,Stretch,4,4,6,7,7
+8,___arian,Tract,Fruit,Barb,Sect,5,5,4,4,5
+9,Fashion stores,Jigsaw,Oasis,Monsoon,Mango,6,5,7,5,7
+9,Types of puzzle,Crossword,Tentaizu,Tangram,KenKen,9,8,7,6,9
+9,Tropical fruit,Guava,Rambutan,Avocado,Durian,5,8,7,6,8
+9,Woodworking tools,Adze,Plane,Chisel,Bradawl,4,5,6,7,7
+10,Star Trek captains,Kirk,Archer,Janeway,Sisko,4,6,7,5,7
+10,French regional adjectives,Picard,Provençal,Norman,Alsatian,6,9,6,8,9
+10,Herding dogs,Collie,Bergamasco,Lancashire Heeler,Schapendoes,6,10,17,11,17
+10,Film critics,Kael,Kermode,Ebert,Bazin,4,7,5,5,7
+11,David Fincher films,Fight Club,Gone Girl,Panic Room,Zodiac,10,9,10,6,10
+11,___ Sisters,Magdalene,Scissor,Seven,Ugly,9,7,5,4,9
+11,Astological Terms,Ascendant,Conjunction,House,Square,9,11,5,6,11
+11,Gun dogs,Pointer,Brittany,Münsterländer,Italian spinone,7,8,13,15,15
+12,Contain band names,Cabbage,Amusement,Combusted,Brose,7,9,9,5,9
+12,___ park,Science,Country,Caravan,Safari,7,7,7,6,7
+12,Types of jacket,Donkey,Harrington,Nehru,Dinner,6,10,5,6,10
+12,Web browsers,Opera,Chrome,Edge,Torch,5,6,4,5,6
+13,Contain currencies,Trouble,Neuron,Franco,Boulevard,7,6,6,9,9
+13,Lloyd Webber titles,Phantom,Superstar,Starlight,Aspects,7,9,9,7,9
+13,Rolls-Royce models,Silver Ghost,Camargue,Wraith,Corniche,12,8,6,8,12
+13,Ghosts,Spectre,Shade,Revenant,Spook,7,5,8,5,8
+14,Record rpms,33 1/3,45,78,66 2/3,,,,,
+14,Film titles,10,300,2012,Infinity,,,,,
+14,Accession dates of the four Kings William,1066,1087,1689,1830,,,,,
+14,Freezing point of water,0,32,273.15,491.67,,,,,
+15,Song titles,One,5.15,"5, 6, 7, 8",1999,,,,,
+15,Cubes,1,27,125,343,,,,,
+15,Accession dates of queens,1558,1702,1837,1952,,,,,
+15,Athletics distances,110,400,1500,10000,,,,,
+16,Pie makers,Titus Andronicus,Mrs Lovett,Mrs Miggins,Pukka,,,,,
+16,Hindi words,Bandana,Pashmina,Pyjamas,Chutney,,,,,
+16,Neckwear,Cravat,Kerchief,Fichu,Ascot,,,,,
+16,Helena Bonham Carter roles,The Red Queen,Mrs Bucket,Ophelia,Bellatrix Lestrange,,,,,
+17,Gave name to medical conditions,Bell,Huntington,Alzheimer,Hodgkin,,,,,
+17,Homophones of vessels,Pale,Your,Earn,Weil,,,,,
+17,'… and the ___' musical acts,Gang,News,Four Seasons,Ants,,,,,
+17,Time signals,Pips,Falling ball,Cuckoo,Whistle,,,,,
+18,British birds,Jay,Shag,Swift,Twite,,,,,
+18,___cock,Poppy,Sea,Pea,Shuttle,,,,,
+18,Palindromes,Eye,Level,Deed,Pop,,,,,
+18,Welsh rivers,Dee,Wye,Usk,Taff,,,,,
+19,Anagrams of metals,Deal,Snug tent,Nit,Livers,,,,,
+19,Castles in Kent,Walmer,Hever,Cooling,Leeds,,,,,
+19,Lost their initial K,Night,Not,Nob,Nave,,,,,
+19,Parts of an arrow,Nock,Fletching,Head,Shaft,,,,,
+20,Shakespearean characters named Leo___,Ntes,Nardo,Nine,Nato,,,,,
+20,Multilingual 'no',Não,Nein,Nyet,Nej,,,,,
+20,Parts of the body,Nose,Nape,Nerve,Nates,,,,,
+20,Plants,Nerine,Nettle,Nipa,Nyssa,,,,,
+21,Multilingual 'mother',Mutter,Moeder,Matka,Mère,,,,,
+21,Animals,Mink,Molly,Mantis,Martin,,,,,
+21,Biblical characters,Mash,Matthias,Matthew,Mark,,,,,
+21,Tantric rituals,Madya,Māṃsa ,Matsya,Mudrā,,,,,
