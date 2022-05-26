@@ -1,11 +1,11 @@
 services:
-  api:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    image: api
-    environment:
-      ENVIRONMENT: prod
+  # api:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   image: api
+  #   environment:
+  #     ENVIRONMENT: prod
   client:
     build:
       context: ./frontend

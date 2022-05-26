@@ -1,4 +1,4 @@
-import './Wall.css'
+import './styles/Wall.css'
 import classNames from 'classnames'
 import { useEffect } from 'react'
 

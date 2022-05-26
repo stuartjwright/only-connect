@@ -1,6 +1,6 @@
 import Timer from './Timer.js'
 import Lives from './Lives.js'
-import './Header.css'
+import './styles/Header.css'
 
 const Header = ({ timer, frozen, lives }) => {
   return (

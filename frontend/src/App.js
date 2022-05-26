@@ -1,26 +1,15 @@
-import { useState, useEffect, useCallback } from 'react'
-import './App.css'
-import {
-  getNewWall,
-  postGuess,
-  requestSolution,
-  requestFreeze,
-} from './requests.js'
+import { useState, useEffect, useCallback, useReducer } from 'react'
+import './styles/App.css'
 import Wall from './Wall.js'
 import Footer from './Footer.js'
 import Header from './Header.js'
+import { gameStateReducer, initialGameState } from './gameState'
+import { timeToSolve, numSquares } from './constants'
 
 const App = () => {
-  const timeToSolve = 180 // 3 minutes
-  const numSquares = 16 // 4x4 grid
-
-  // Initialise empty wall
-  const [wallData, setWallData] = useState({})
-  const { frozen, complete, lives } = wallData
-  const wallId = wallData['wall_id']
-
-  // Intialise countdown timer to 3 minutes
-  const [timer, setTimer] = useState(timeToSolve)
+  // All game state handled in game state reducer
+  const [wallData, dispatch] = useReducer(gameStateReducer, initialGameState)
+  const { frozen, complete, lives, wallId } = wallData
 
   // Keep track of user's selections for their current guess
   const [selectedIds, setSelectedIds] = useState(new Array(numSquares).fill(0))
@@ -28,18 +17,8 @@ const App = () => {
   // Keep track of whether or not user has opted to show connections
   const [showConnections, setShowConnections] = useState(false)
 
-  // Fetch new wall
-  const fetchWallData = async () => {
-    const newWall = await getNewWall()
-    setWallData(newWall)
-    setSelectedIds(new Array(numSquares).fill(0))
-    setShowConnections(false)
-  }
-
-  // Fetch new wall on first load
-  useEffect(() => {
-    fetchWallData()
-  }, [])
+  // Intialise countdown timer to 3 minutes
+  const [timer, setTimer] = useState(timeToSolve)
 
   // Switch between showing connections or not
   const toggleConnections = () => {
@@ -49,27 +28,30 @@ const App = () => {
   // Unselect all when user hits relevant button
   const clearSelected = () => setSelectedIds(new Array(numSquares).fill(0))
 
-  // Send user's guess to server, and update wall
-  const sendGuess = async (guessIds) => {
-    const newWall = await postGuess(wallId, guessIds)
-    setWallData(newWall)
-    setSelectedIds(new Array(numSquares).fill(0))
+  // Fetch new wall
+  const fetchWallData = () => {
+    dispatch({ type: 'new', payload: wallId })
+    clearSelected()
+    setShowConnections(false)
+  }
+
+  // Send user's guess to be processed, and update wall
+  const sendGuess = (guessIds) => {
+    dispatch({ type: 'guess', payload: guessIds })
+    clearSelected()
   }
 
   // Get solution if user gives up
-  const getSolution = async () => {
-    const wallId = wallData['wall_id']
-    const completedWall = await requestSolution(wallId)
-    setWallData(completedWall)
+  const getSolution = () => {
+    dispatch({ type: 'complete' })
   }
 
   // Freeze wall if clock reaches three minutes
-  const freezeWall = useCallback(async () => {
-    const frozenWall = await requestFreeze(wallId)
-    setWallData(frozenWall)
+  const freezeWall = useCallback(() => {
+    dispatch({ type: 'freeze' })
     setTimer(0)
-    setSelectedIds(new Array(numSquares).fill(0))
-  }, [wallId])
+    clearSelected()
+  }, [])
 
   // Decrement timer once a second until we hit 0
   useEffect(() => {

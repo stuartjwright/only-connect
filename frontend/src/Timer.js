@@ -1,4 +1,4 @@
-import './Timer.css'
+import './styles/Timer.css'
 import classNames from 'classnames'
 
 const Timer = ({ timer }) => {

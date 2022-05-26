@@ -1,4 +1,4 @@
-import './Lives.css'
+import './styles/Lives.css'
 
 const Lives = ({ frozen, lives }) => {
   const content = frozen ? '💔' : ' ❤️ '.repeat(lives)
