@@ -2,7 +2,7 @@
 
 ## How to Play
 
-The game is currently live [here](http://206.189.19.65/).
+The game is currently live [here](https://prismatic-clafoutis-7e1e84.netlify.app/).
 
 Given a 'wall' of 16 tiles, the player has three minutes to correctly arrange the tiles into four groups of four, such that each group contains tiles which share a connection. Walls typically contain 'red herrings', where 5 or more tiles might fit a certain category, but there is only one way to correctly arrange the entire wall into four groups of four. For example, on the following wall, there are seven computer keyboard keys (Shift, Enter, Alt, Delete, Space, Escape, Insert):
 
@@ -16,4 +16,4 @@ Both the format of the game and the walls themselves are taken directly from the
 
 ## Implementation
 
-The game logic and backend are written in Python, and the frontend is written in React. Each part of the application has a Dockerfile, and at the root of the project is a `docker-compose.yml` file. Run `docker-compose up --build` to launch application.
+The game logic was initially written in Python, with the React frontend sending requests to the Python REST API on each guess, but it was later refactored to allow for offline play, with all game logic now client-side. All application code is therefore in the `frontend` sub-directory, with the `backend` directory now containing redundant code.
